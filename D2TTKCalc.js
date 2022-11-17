@@ -1,16 +1,17 @@
-// weapon stats and data as an object
+// weapon stats and data as objects
 
 const autoRifleData = {
-    'adaptive': {RPM: 600, bodyDMG: 14.3, critDMG: 22.8},
-    'rapidfire': {RPM: 720, bodyDMG: 13.4, critDMG: 20.1}
+    adaptive: {RPM: 600, bodyDMG: 14.3, critDMG: 22.8},
+    rapidfire: {RPM: 720, bodyDMG: 13.4, critDMG: 20.1},
+    highimpact: {RPM: 360, bodyDMG: 22.0, critDMG: 35.2},
+    precision: {RPM: 450, bodyDMG: 20, critDMG: 31}
 }
 
 
 // Create constants for elements
 const supertypes = document.querySelectorAll(['.supertype']);
-console.log(supertypes)
 
-
+const archetypeContainer = document.getElementById('archetypeContainer')
 
 // create new divs for weapon archetypes when clicking a supertype
 // also remove old divs if any existed
@@ -19,7 +20,6 @@ supertypes.forEach((button) =>
     button.addEventListener('click', () => createDivs(button.id))
 )
 
-console.log(Object.keys(autoRifleData).length)
 
 function createDivs(archetype) {
     const archetypeContainer = document.getElementById('archetypeContainer')
@@ -34,9 +34,22 @@ function createDivs(archetype) {
     }
 }
 
-// time to kill calculations
+// event listener for archetype selection
 
-function calculateShotsToKill (bodyShotDamage, critDamage){
+archetypeContainer.addEventListener('click', function(e){
+    if(e.target && e.target.matches('button.archetypeButton')){
+        console.log('hit')
+    } else console.log('miss')
+})
+
+
+// time to kill calculation
+
+function calculateTimeToKill (critDamage, bodyShotDamage, rpm){
+let remainingHealth = 200;
+let numCrits = 0;
+let numBodyShots = 0;
+let numberOfShots = 0;
     for (let numberOfShots = 0;  remainingHealth >= 0; numberOfShots++){
         if(bodyShotDamage >= remainingHealth || (critDamage < remainingHealth && 2 * bodyShotDamage >= remainingHealth)){
             numBodyShots++
@@ -46,10 +59,10 @@ function calculateShotsToKill (bodyShotDamage, critDamage){
             remainingHealth -= critDamage
         }
     }
-    return shots = [numberOfShots, numBodyShots, numCrits]
+    numberOfShots = numBodyShots + numCrits
+    let shots = [numberOfShots, numBodyShots, numCrits]
+    let timeToKill = (shots[0] - 1)/(rpm/60)
+    console.log(shots)
+    console.log(timeToKill)
 }
 
-function calculateTimeToKill (shots, rpm){
-    timeToKill = (shots[1] - 1) / (rmp/60)
-    return timeToKill
-}
