@@ -27,7 +27,7 @@ function createDivs(archetype) {
     if(archetype == 'autorifle'){
         for(let i = 0; i < Object.keys(autoRifleData).length; i++) {
             const button = document.createElement('button');
-            button.classList.add('archetypeButton')
+            button.classList.add('archetypeButton', 'autorifle', `${i}`)
             button.textContent= Object.keys(autoRifleData)[i]
             archetypeContainer.appendChild(button)
         }
@@ -38,10 +38,27 @@ function createDivs(archetype) {
 
 archetypeContainer.addEventListener('click', function(e){
     if(e.target && e.target.matches('button.archetypeButton')){
-        console.log('hit')
+        weapon = [e.target.classList[1], + e.target.classList[2]]
+        findWeaponData(weapon)
     } else console.log('miss')
 })
 
+
+// find weapon data
+
+function findWeaponData (array) {
+    let critDamage;
+    let bodyShotDamage;
+    let rpm;
+    let a = array[1]
+    console.log(array)
+    if (array[0] == 'autorifle'){
+        critDamage = Object.values(autoRifleData)[a].critDMG
+        bodyShotDamage = Object.values(autoRifleData)[a].bodyDMG
+        rpm = Object.values(autoRifleData)[a].RPM
+    }
+    calculateTimeToKill(critDamage, bodyShotDamage, rpm);
+}
 
 // time to kill calculation
 
