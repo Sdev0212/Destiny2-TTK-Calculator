@@ -14,17 +14,42 @@ body {
 
 #weaponsContainer {
     display: flex;
-    flex-direction: column;
     background-color: aqua;
     width: 90vw;
     height: 90vh;
     border-radius: 10px;
+    justify-content: space-between;
+}
+
+#supertypeContainer {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
 }
 
 .supertype  {
     background-color: aliceblue;
-    width: 20%;
-    height: 10%;
+    width: 100%;
+    height: 15%;
     margin: 10px;
     border-radius: 5px;
+}
+
+#archetypeContainer {
+    background-color: blueviolet;
+    width: 30%;
+    height: 100%;
+}
+
+
+#calcs {
+    background-color: brown;
+    width: 30%;
+
+}
+
+
+.archetypeButton {
+    width: 70%;
+    background-color: aqua;
 }
