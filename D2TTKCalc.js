@@ -1,47 +1,47 @@
 // weapon stats and data as objects
 
 const autoRifleData = {
-    adaptive: {RPM: 600, bodyDMG: 14.3, critDMG: 22.8},
-    rapidfire: {RPM: 720, bodyDMG: 13.4, critDMG: 20.1},
-    highimpact: {RPM: 360, bodyDMG: 22.0, critDMG: 35.2},
-    precision: {RPM: 450, bodyDMG: 20, critDMG: 31}
+    adaptive: {RPM: 600, bodyDMG: 14.3, critDMG: 22.8, isBurst: false},
+    rapidfire: {RPM: 720, bodyDMG: 13.4, critDMG: 20.1, isBurst: false},
+    highimpact: {RPM: 360, bodyDMG: 22.0, critDMG: 35.2, isBurst: false},
+    precision: {RPM: 450, bodyDMG: 20, critDMG: 31, isBurst: false}
 }
 
 const sidearmData = {
-    adaptive: {RPM: 300, bodyDMG: 36, critDMG: 50.5},
-    surosRapidfire: {RPM: 450, bodyDMG: 25, critDMG: 35.1},
-    lightweight: {RPM: 360, bodyDMG: 31, critDMG: 43.5},
-    precision: {RPM: 257, bodyDMG: 40, critDMG: 56.1},
-    adaptiveBurst: {RPM: 491, bodyDMG: 20, critDMG: 32},
-    aggressiveBurst: {RPM: 325, bodyDMG: 32, critDMG: 44.9},
+    adaptive: {RPM: 300, bodyDMG: 36, critDMG: 50.5, isBurst: false},
+    surosRapidfire: {RPM: 450, bodyDMG: 25, critDMG: 35.1, isBurst: false},
+    lightweight: {RPM: 360, bodyDMG: 31, critDMG: 43., isBurst: false},
+    precision: {RPM: 257, bodyDMG: 40, critDMG: 56.1, isBurst: false},
+    adaptiveBurst: {RPM: 491, bodyDMG: 20, critDMG: 32, isBurst: true, burstCount: 3, burstDelay: 0.233, rpmInBurst: 900},
+    aggressiveBurst: {RPM: 325, bodyDMG: 32, critDMG: 44.9, isBurst: true, burstCount: 2, burstDelay: 0.267, rpmInBurst: 600},
 }
 
 const smgData = {
-    lightweight: {RPM: 900, bodyDMG: 10.9, critDMG: 17.9},
-    adaptive: {RPM: 900, bodyDMG: 11.3, critDMG: 16.2},
-    aggressive: {RPM: 720, bodyDMG: 15, critDMG: 21.6},
-    precision: {RPM: 600, bodyDMG: 17, critDMG: 23.8},
+    lightweight: {RPM: 900, bodyDMG: 10.9, critDMG: 17.9, isBurst: false},
+    adaptive: {RPM: 900, bodyDMG: 11.3, critDMG: 16.2, isBurst: false},
+    aggressive: {RPM: 720, bodyDMG: 15, critDMG: 21.6, isBurst: false},
+    precision: {RPM: 600, bodyDMG: 17, critDMG: 23.8, isBurst: false},
 }
 
 const hcData = {
-    adaptive: {RPM: 140, bodyDMG: 46.5, critDMG: 69.8},
-    aggressive: {RPM: 120, bodyDMG: 50, critDMG: 79.9},
-    precision: {RPM: 180, bodyDMG: 40, critDMG: 60},
+    adaptive: {RPM: 140, bodyDMG: 46.5, critDMG: 69.8, isBurst: false},
+    aggressive: {RPM: 120, bodyDMG: 50, critDMG: 79.9, isBurst: false},
+    precision: {RPM: 180, bodyDMG: 40, critDMG: 60, isBurst: false},
 }
 
 const pulserifleData = {
-    rapidfire: {RPM: 540, bodyDMG: 14, critDMG: 23.7},
-    lightweight: {RPM: 450, bodyDMG: 16, critDMG: 26.4},
-    adaptive: {RPM: 390, bodyDMG: 19, critDMG: 31.4},
-    highimpact: {RPM: 340, bodyDMG: 22, critDMG: 35.2},
-    aggressive: {RPM: 450, bodyDMG: 15.5, critDMG: 26.3},
+    rapidfire: {RPM: 540, bodyDMG: 14, critDMG: 23.7, isBurst: true, burstCount: 3, burstDelay: 0.2, rpmInBurst: 900},
+    lightweight: {RPM: 450, bodyDMG: 16, critDMG: 26.4, isBurst: true, burstCount: 3, burstDelay: 0.267, rpmInBurst: 900},
+    adaptive: {RPM: 390, bodyDMG: 19, critDMG: 31.4, isBurst: true, burstCount: 3, burstDelay: 0.33, rpmInBurst: 900},
+    highimpact: {RPM: 340, bodyDMG: 22, critDMG: 35.2, isBurst: true, burstCount: 3, burstDelay: 0.4, rpmInBurst: 900},
+    aggressive: {RPM: 450, bodyDMG: 15.5, critDMG: 26.3, isBurst: true, burstCount: 4, burstDelay: 0.33, rpmInBurst: 900},
 }
 
 const scoutData = {
-    rapidfire: {RPM: 257, bodyDMG: 28, critDMG: 46.9},
-    lightweight: {RPM: 200, bodyDMG: 31, critDMG: 54.1},
-    precision: {RPM: 180, bodyDMG: 38, critDMG: 60.7},
-    highimpact: {RPM: 150, bodyDMG: 40, critDMG: 70},
+    rapidfire: {RPM: 257, bodyDMG: 28, critDMG: 46.9, isBurst: false},
+    lightweight: {RPM: 200, bodyDMG: 31, critDMG: 54.1, isBurst: false},
+    precision: {RPM: 180, bodyDMG: 38, critDMG: 60.7, isBurst: false},
+    highimpact: {RPM: 150, bodyDMG: 40, critDMG: 70, isBurst: false},
 }
 
 
@@ -133,6 +133,9 @@ function findWeaponData (array) {
     let critDamage;
     let bodyShotDamage;
     let rpm;
+    let isBurst = false;
+    let burstCount;
+    let burstDelay;
     let a = array[1]
     if (array[0] == 'autorifle'){
         critDamage = Object.values(autoRifleData)[a].critDMG
@@ -140,9 +143,16 @@ function findWeaponData (array) {
         rpm = Object.values(autoRifleData)[a].RPM
     }
     else if (array[0] == 'sidearm'){
+        isBurst = Object.values(sidearmData)[a].isBurst
         critDamage = Object.values(sidearmData)[a].critDMG
         bodyShotDamage = Object.values(sidearmData)[a].bodyDMG
-        rpm = Object.values(sidearmData)[a].RPM
+        if(isBurst){
+            rpm = Object.values(sidearmData)[a].rpmInBurst
+            burstDelay = Object.values(sidearmData)[a].burstDelay
+            burstCount = Object.values(sidearmData)[a].burstCount
+        } else {
+            rpm = Object.values(sidearmData)[a].RPM
+        }
     }
     else if (array[0] == 'smg'){
         critDamage = Object.values(smgData)[a].critDMG
@@ -155,17 +165,22 @@ function findWeaponData (array) {
         rpm = Object.values(hcData)[a].RPM
     }
     else if (array[0] == 'pulseRifle'){
+        isBurst = Object.values(pulserifleData)[a].isBurst
         critDamage = Object.values(pulserifleData)[a].critDMG
         bodyShotDamage = Object.values(pulserifleData)[a].bodyDMG
-        rpm = Object.values(pulserifleData)[a].RPM
-    }
+        if(isBurst){
+            rpm = Object.values(pulserifleData)[a].rpmInBurst
+            burstDelay = Object.values(pulserifleData)[a].burstDelay
+            burstCount = Object.values(pulserifleData)[a].burstCount
+        } else {
+            rpm = Object.values(pulserifleData)[a].RPM
+        }    }
     else if (array[0] == 'scoutRifle'){
         critDamage = Object.values(scoutData)[a].critDMG
         bodyShotDamage = Object.values(scoutData)[a].bodyDMG
         rpm = Object.values(scoutData)[a].RPM
     }
-
-    calculateTimeToKill(critDamage, bodyShotDamage, rpm);
+    calculateTimeToKill(critDamage, bodyShotDamage, rpm, isBurst, burstCount, burstDelay);
 }
 
 
@@ -173,12 +188,14 @@ function findWeaponData (array) {
 
 // time to kill calculation
 
-function calculateTimeToKill (critDamage, bodyShotDamage, rpm){
+function calculateTimeToKill (critDamage, bodyShotDamage, rpm, isBurst, burstCount, burstDelay){
 let remainingHealth = 194;
 let startingHealth = 194;
 let numCrits = 0;
 let numBodyShots = 0;
 let numberOfShots = 0;
+let timeToKill;
+let bodyshotTTK;
     for (let numberOfShots = 0;  remainingHealth >= 0; numberOfShots++){
         if(bodyShotDamage >= remainingHealth || (critDamage < remainingHealth && 2 * bodyShotDamage >= remainingHealth)){
             numBodyShots++
@@ -190,9 +207,21 @@ let numberOfShots = 0;
     }
     numberOfShots = numBodyShots + numCrits
     let shots = [numberOfShots, numBodyShots, numCrits]
-    let timeToKill = Math.round((shots[0] - 1)/(rpm/60) * 100) / 100
-    let bodyshotsToKill = Math.ceil(startingHealth/bodyShotDamage)
-    let bodyshotTTK = Math.round((bodyshotsToKill - 1) / (rpm / 60)*100)/100
+
+    if(isBurst) {
+        let burstsToKill = Math.ceil(shots[0] / burstCount)
+        console.log(burstsToKill, burstDelay, rpm)
+        timeToKill = Math.round(((((burstsToKill - 1) * burstDelay) + ((shots[0]-burstsToKill))/(rpm/60)))*100)/100
+        let bodyshotsToKill = Math.ceil(startingHealth/bodyShotDamage)
+        let bodyBurstsToKill = Math.ceil(bodyshotsToKill / burstCount)
+        bodyshotTTK = Math.round(((((bodyBurstsToKill - 1) * burstDelay) + ((bodyshotsToKill-bodyBurstsToKill))/(rpm/60)))*100)/100
+
+    } else {
+        timeToKill = Math.round((shots[0] - 1)/(rpm/60) * 100) / 100
+        let bodyshotsToKill = Math.ceil(startingHealth/bodyShotDamage)
+        bodyshotTTK = Math.round((bodyshotsToKill - 1) / (rpm / 60)*100)/100
+    }
+
 
     postResult(timeToKill, shots, bodyshotTTK)
 }
