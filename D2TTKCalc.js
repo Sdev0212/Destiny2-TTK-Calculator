@@ -16,6 +16,34 @@ const sidearmData = {
     aggressiveBurst: {RPM: 325, bodyDMG: 32, critDMG: 44.9},
 }
 
+const smgData = {
+    lightweight: {RPM: 900, bodyDMG: 10.9, critDMG: 17.9},
+    adaptive: {RPM: 900, bodyDMG: 11.3, critDMG: 16.2},
+    aggressive: {RPM: 720, bodyDMG: 15, critDMG: 21.6},
+    precision: {RPM: 600, bodyDMG: 17, critDMG: 23.8},
+}
+
+const hcData = {
+    adaptive: {RPM: 140, bodyDMG: 46.5, critDMG: 69.8},
+    aggressive: {RPM: 120, bodyDMG: 50, critDMG: 79.9},
+    precision: {RPM: 180, bodyDMG: 40, critDMG: 60},
+}
+
+const pulserifleData = {
+    rapidfire: {RPM: 540, bodyDMG: 14, critDMG: 23.7},
+    lightweight: {RPM: 450, bodyDMG: 16, critDMG: 26.4},
+    adaptive: {RPM: 390, bodyDMG: 19, critDMG: 31.4},
+    highimpact: {RPM: 340, bodyDMG: 22, critDMG: 35.2},
+    aggressive: {RPM: 450, bodyDMG: 15.5, critDMG: 26.3},
+}
+
+const scoutData = {
+    rapidfire: {RPM: 257, bodyDMG: 28, critDMG: 46.9},
+    lightweight: {RPM: 200, bodyDMG: 31, critDMG: 54.1},
+    precision: {RPM: 180, bodyDMG: 38, critDMG: 60.7},
+    highimpact: {RPM: 150, bodyDMG: 40, critDMG: 70},
+}
+
 
 // Create constants for elements
 const supertypes = document.querySelectorAll(['.supertype']);
@@ -46,6 +74,38 @@ function createDivs(archetype) {
             const button = document.createElement('button');
             button.classList.add('archetypeButton', 'sidearm', `${i}`)
             button.textContent= Object.keys(sidearmData)[i]
+            archetypeContainer.appendChild(button)
+        }
+    }
+    else if(archetype == 'smg'){
+        for(let i = 0; i < Object.keys(smgData).length; i++) {
+            const button = document.createElement('button');
+            button.classList.add('archetypeButton', 'smg', `${i}`)
+            button.textContent= Object.keys(smgData)[i]
+            archetypeContainer.appendChild(button)
+        }
+    }
+    else if(archetype == 'handcannon'){
+        for(let i = 0; i < Object.keys(hcData).length; i++) {
+            const button = document.createElement('button');
+            button.classList.add('archetypeButton', 'handcannon', `${i}`)
+            button.textContent= Object.keys(hcData)[i]
+            archetypeContainer.appendChild(button)
+        }
+    }
+    else if(archetype == 'pulseRifle'){
+        for(let i = 0; i < Object.keys(pulserifleData).length; i++) {
+            const button = document.createElement('button');
+            button.classList.add('archetypeButton', 'pulseRifle', `${i}`)
+            button.textContent= Object.keys(pulserifleData)[i]
+            archetypeContainer.appendChild(button)
+        }
+    }
+    else if(archetype == 'scoutRifle'){
+        for(let i = 0; i < Object.keys(scoutData).length; i++) {
+            const button = document.createElement('button');
+            button.classList.add('archetypeButton', 'scoutRifle', `${i}`)
+            button.textContent= Object.keys(scoutData)[i]
             archetypeContainer.appendChild(button)
         }
     }
@@ -83,6 +143,26 @@ function findWeaponData (array) {
         critDamage = Object.values(sidearmData)[a].critDMG
         bodyShotDamage = Object.values(sidearmData)[a].bodyDMG
         rpm = Object.values(sidearmData)[a].RPM
+    }
+    else if (array[0] == 'smg'){
+        critDamage = Object.values(smgData)[a].critDMG
+        bodyShotDamage = Object.values(smgData)[a].bodyDMG
+        rpm = Object.values(smgData)[a].RPM
+    }
+    else if (array[0] == 'handcannon'){
+        critDamage = Object.values(hcData)[a].critDMG
+        bodyShotDamage = Object.values(hcData)[a].bodyDMG
+        rpm = Object.values(hcData)[a].RPM
+    }
+    else if (array[0] == 'pulseRifle'){
+        critDamage = Object.values(pulserifleData)[a].critDMG
+        bodyShotDamage = Object.values(pulserifleData)[a].bodyDMG
+        rpm = Object.values(pulserifleData)[a].RPM
+    }
+    else if (array[0] == 'scoutRifle'){
+        critDamage = Object.values(scoutData)[a].critDMG
+        bodyShotDamage = Object.values(scoutData)[a].bodyDMG
+        rpm = Object.values(scoutData)[a].RPM
     }
 
     calculateTimeToKill(critDamage, bodyShotDamage, rpm);
