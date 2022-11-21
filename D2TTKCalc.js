@@ -52,7 +52,7 @@ let rpm;
 let burstCount;
 let burstDelay;
 let resilienceValue = 0;
-let health;
+let health = 194;
 
 // Create constants for elements
 const supertypes = document.querySelectorAll(['.supertype']);
@@ -63,14 +63,21 @@ const calcButton = document.getElementById('calculateTTK')
 
 const resilience = document.getElementById('resilienceValue')
 
+const supertypeContainer = document.getElementById('supertypeContainer')
+
 console.log(resilience)
 
 // create new divs for weapon archetypes when clicking a supertype
 // also remove old divs if any existed
 
+
+    
 supertypes.forEach((button) => 
-    button.addEventListener('click', () => createDivs(button.id))
-)
+button.addEventListener('click', () => {
+    createDivs(button.id)
+}))
+
+
 
 
 function createDivs(archetype) {
@@ -132,8 +139,14 @@ function createDivs(archetype) {
 // event listener for archetype selection, finds data required for calcs
 
 archetypeContainer.addEventListener('click', function(e){
+    const archetypeButtons = document.querySelectorAll('button.archetypeButton')
+    archetypeButtons.forEach((btn) => {
+        btn.classList.remove("selected")
+    })
+
     if(e.target && e.target.matches('button.archetypeButton')){
         weapon = [e.target.classList[1], + e.target.classList[2]]
+        e.target.classList.add("selected")
         findWeaponData(weapon)
     } 
 })
@@ -286,7 +299,7 @@ function postResult(timeToKill, shots, bodyshotTTK) {
     const TTK = document.getElementById('optimalTTK')
     const STK = document.getElementById('shotsToKill')
     const bodyTTK = document.getElementById('bodyshotTTK')
-    TTK.textContent = `${timeToKill} seconds`
-    STK.textContent = `${shots[0]} shots, ${shots[2]} Crits, ${shots[1]} Body`
-    bodyTTK.textContent = `${bodyshotTTK} seconds`
+    TTK.textContent = `Optimal TTK: ${timeToKill} seconds`
+    STK.textContent = `Shots needed: ${shots[0]} total, ${shots[2]} Crits, ${shots[1]} Body`
+    bodyTTK.textContent = `Bodyshot TTK: ${bodyshotTTK} seconds`
 }

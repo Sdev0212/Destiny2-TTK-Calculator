@@ -43,12 +43,12 @@
         </div>
         <div id="calcs">
             <div id="damageModifiers"></div>
-            <input type="number" max="10" min="0"  id="resilienceValue">
+            <label for="resilienceValue">Resilience: </label><input type="number" max="10" min="0"  id="resilienceValue" value="7">
             <div id="result">
                 <button id="calculateTTK">calculate TTK</button>
-                <div id="optimalTTK"></div>
-                <div id="shotsToKill"></div>
-                <div id="bodyshotTTK"></div>
+                <div class="results" id="optimalTTK">Optimal TTK: </div>
+                <div class="results" id="bodyshotTTK">Bodyshot TTK: </div>
+                <div class="results" id="shotsToKill">Shots needed: </div>
             </div>
         </div>
     </div>
