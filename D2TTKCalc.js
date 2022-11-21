@@ -74,7 +74,7 @@ console.log(resilience)
     
 supertypes.forEach((button) => 
 button.addEventListener('click', () => {
-    createDivs(button.id)
+    createDivs(button)
 }))
 
 
@@ -83,7 +83,12 @@ button.addEventListener('click', () => {
 function createDivs(archetype) {
     const archetypeContainer = document.getElementById('archetypeContainer')
     document.querySelectorAll('.archetypeButton').forEach(e => e.remove())
-    if(archetype == 'autorifle'){
+    const supertypeBtns = document.querySelectorAll('.supertype')
+    supertypeBtns.forEach((button) => {
+        button.classList.remove('selected')
+    })
+    archetype.classList.add('selected')
+    if(archetype.id == 'autorifle'){
         for(let i = 0; i < Object.keys(autoRifleData).length; i++) {
             const button = document.createElement('button');
             button.classList.add('archetypeButton', 'autorifle', `${i}`)
@@ -91,7 +96,7 @@ function createDivs(archetype) {
             archetypeContainer.appendChild(button)
         }
     } 
-    else if(archetype == 'sidearm'){
+    else if(archetype.id == 'sidearm'){
         for(let i = 0; i < Object.keys(sidearmData).length; i++) {
             const button = document.createElement('button');
             button.classList.add('archetypeButton', 'sidearm', `${i}`)
@@ -99,7 +104,7 @@ function createDivs(archetype) {
             archetypeContainer.appendChild(button)
         }
     }
-    else if(archetype == 'smg'){
+    else if(archetype.id == 'smg'){
         for(let i = 0; i < Object.keys(smgData).length; i++) {
             const button = document.createElement('button');
             button.classList.add('archetypeButton', 'smg', `${i}`)
@@ -107,7 +112,7 @@ function createDivs(archetype) {
             archetypeContainer.appendChild(button)
         }
     }
-    else if(archetype == 'handcannon'){
+    else if(archetype.id == 'handcannon'){
         for(let i = 0; i < Object.keys(hcData).length; i++) {
             const button = document.createElement('button');
             button.classList.add('archetypeButton', 'handcannon', `${i}`)
@@ -115,7 +120,7 @@ function createDivs(archetype) {
             archetypeContainer.appendChild(button)
         }
     }
-    else if(archetype == 'pulseRifle'){
+    else if(archetype.id == 'pulseRifle'){
         for(let i = 0; i < Object.keys(pulserifleData).length; i++) {
             const button = document.createElement('button');
             button.classList.add('archetypeButton', 'pulseRifle', `${i}`)
@@ -123,7 +128,7 @@ function createDivs(archetype) {
             archetypeContainer.appendChild(button)
         }
     }
-    else if(archetype == 'scoutRifle'){
+    else if(archetype.id == 'scoutRifle'){
         for(let i = 0; i < Object.keys(scoutData).length; i++) {
             const button = document.createElement('button');
             button.classList.add('archetypeButton', 'scoutRifle', `${i}`)

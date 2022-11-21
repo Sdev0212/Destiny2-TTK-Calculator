@@ -35,9 +35,7 @@ body {
     border-radius: 5px;
 }
 
-.supertype:active {
-    background-color: rgb(10, 68, 68);
-}
+
 
 #archetypeContainer {
     background-color: blueviolet;
