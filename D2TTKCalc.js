@@ -44,11 +44,26 @@ const scoutData = {
     highimpact: {RPM: 150, bodyDMG: 40, critDMG: 70, isBurst: false},
 }
 
+// declare variables
+
+let critDamage;
+let bodyShotDamage;
+let rpm;
+let burstCount;
+let burstDelay;
+let resilienceValue = 0;
+let health;
 
 // Create constants for elements
 const supertypes = document.querySelectorAll(['.supertype']);
 
 const archetypeContainer = document.getElementById('archetypeContainer')
+
+const calcButton = document.getElementById('calculateTTK')
+
+const resilience = document.getElementById('resilienceValue')
+
+console.log(resilience)
 
 // create new divs for weapon archetypes when clicking a supertype
 // also remove old divs if any existed
@@ -123,19 +138,21 @@ archetypeContainer.addEventListener('click', function(e){
     } 
 })
 
+// Event listeners 
 
+calcButton.addEventListener('click', () => {
+    calculateTimeToKill()
+})
 
-
+resilience.addEventListener('input', () => {
+    resilienceValue = parseFloat(resilience.value)
+    calculateHealth(resilienceValue)
+})  
 
 // find weapon data
 
 function findWeaponData (array) {
-    let critDamage;
-    let bodyShotDamage;
-    let rpm;
-    let isBurst = false;
-    let burstCount;
-    let burstDelay;
+    isBurst = false;
     let a = array[1]
     if (array[0] == 'autorifle'){
         critDamage = Object.values(autoRifleData)[a].critDMG
@@ -180,17 +197,56 @@ function findWeaponData (array) {
         bodyShotDamage = Object.values(scoutData)[a].bodyDMG
         rpm = Object.values(scoutData)[a].RPM
     }
-    calculateTimeToKill(critDamage, bodyShotDamage, rpm, isBurst, burstCount, burstDelay);
 }
 
+// health calculation
 
+function calculateHealth (resilienceValue) {
+    switch (resilienceValue) {
+        case 0:
+            health = 185;
+            break;                                  
+        case 1:
+            health = 186;
+            break;                                  
+        case 2:
+            health = 187;
+            break;                                  
+        case 3:
+            health = 188;
+            break;                                  
+        case 4:
+            health = 189;
+            break;                                  
+        case 5:
+            health = 190;
+            break;                                  
+        case 6:
+            health = 192;
+            break;                                  
+        case 7:
+            health = 194;
+            break;                                  
+        case 8:
+            health = 196;
+            break;                                  
+        case 9:
+            health = 198;
+            break;                                  
+        case 10:
+            health = 200;
+            break;                                                
+    }
+    return health;
+}
 
 
 // time to kill calculation
 
-function calculateTimeToKill (critDamage, bodyShotDamage, rpm, isBurst, burstCount, burstDelay){
-let remainingHealth = 194;
-let startingHealth = 194;
+function calculateTimeToKill (){
+    console.log(health)
+let remainingHealth = health;
+let startingHealth = health;
 let numCrits = 0;
 let numBodyShots = 0;
 let numberOfShots = 0;
@@ -210,7 +266,6 @@ let bodyshotTTK;
 
     if(isBurst) {
         let burstsToKill = Math.ceil(shots[0] / burstCount)
-        console.log(burstsToKill, burstDelay, rpm)
         timeToKill = Math.round(((((burstsToKill - 1) * burstDelay) + ((shots[0]-burstsToKill))/(rpm/60)))*100)/100
         let bodyshotsToKill = Math.ceil(startingHealth/bodyShotDamage)
         let bodyBurstsToKill = Math.ceil(bodyshotsToKill / burstCount)
