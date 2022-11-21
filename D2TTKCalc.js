@@ -9,7 +9,7 @@ const autoRifleData = {
 
 const sidearmData = {
     adaptive: {RPM: 300, bodyDMG: 36, critDMG: 50.5, isBurst: false},
-    surosRapidfire: {RPM: 450, bodyDMG: 25, critDMG: 35.1, isBurst: false},
+    rapidfire: {RPM: 450, bodyDMG: 25, critDMG: 35.1, isBurst: false},
     lightweight: {RPM: 360, bodyDMG: 31, critDMG: 43., isBurst: false},
     precision: {RPM: 257, bodyDMG: 40, critDMG: 56.1, isBurst: false},
     adaptiveBurst: {RPM: 491, bodyDMG: 20, critDMG: 32, isBurst: true, burstCount: 3, burstDelay: 0.233, rpmInBurst: 900},
