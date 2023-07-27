@@ -266,6 +266,7 @@ function calculateTimeToKill (){
 let remainingHealth = health;
 let startingHealth = health;
 let numCrits = 0;
+let bodyshotsToKill = Math.ceil(startingHealth/bodyShotDamage);
 let numBodyShots = 0;
 let numberOfShots = 0;
 let timeToKill;
@@ -296,15 +297,15 @@ let bodyshotTTK;
     }
 
 
-    postResult(timeToKill, shots, bodyshotTTK)
+    postResult(timeToKill, shots, bodyshotTTK, bodyshotsToKill)
 }
 
 
-function postResult(timeToKill, shots, bodyshotTTK) {
+function postResult(timeToKill, shots, bodyshotTTK, bodyshotsToKill) {
     const TTK = document.getElementById('optimalTTK')
     const STK = document.getElementById('shotsToKill')
     const bodyTTK = document.getElementById('bodyshotTTK')
     TTK.textContent = `Optimal TTK: ${timeToKill} seconds`
     STK.textContent = `Shots needed: ${shots[0]} total, ${shots[2]} Crits, ${shots[1]} Body`
-    bodyTTK.textContent = `Bodyshot TTK: ${bodyshotTTK} seconds`
+    bodyTTK.textContent = `Bodyshot TTK: ${bodyshotTTK} seconds, ${bodyshotsToKill} shots`
 }
