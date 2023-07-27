@@ -27,6 +27,7 @@ const hcData = {
     adaptive: {RPM: 140, bodyDMG: 46.5, critDMG: 69.8, isBurst: false},
     aggressive: {RPM: 120, bodyDMG: 50, critDMG: 79.9, isBurst: false},
     precision: {RPM: 180, bodyDMG: 40, critDMG: 60, isBurst: false},
+    burst: {RPM: 600, bodyDMG: 25, critDMG: 45, isBurst: true, burstCount: 2, burstDelay: 0.366, rpmInBurst: 600},
 }
 
 const pulserifleData = {
@@ -195,9 +196,16 @@ function findWeaponData (array) {
         rpm = Object.values(smgData)[a].RPM
     }
     else if (array[0] == 'handcannon'){
+        isBurst = Object.values(hcData)[a].isBurst
         critDamage = Object.values(hcData)[a].critDMG
         bodyShotDamage = Object.values(hcData)[a].bodyDMG
-        rpm = Object.values(hcData)[a].RPM
+        if(isBurst){
+            rpm = Object.values(hcData)[a].rpmInBurst
+            burstDelay = Object.values(hcData)[a].burstDelay
+            burstCount = Object.values(hcData)[a].burstCount
+        } else {
+            rpm = Object.values(hcData)[a].RPM
+        }     
     }
     else if (array[0] == 'pulseRifle'){
         isBurst = Object.values(pulserifleData)[a].isBurst
@@ -209,7 +217,8 @@ function findWeaponData (array) {
             burstCount = Object.values(pulserifleData)[a].burstCount
         } else {
             rpm = Object.values(pulserifleData)[a].RPM
-        }    }
+        }    
+    }
     else if (array[0] == 'scoutRifle'){
         critDamage = Object.values(scoutData)[a].critDMG
         bodyShotDamage = Object.values(scoutData)[a].bodyDMG
